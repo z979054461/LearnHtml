@@ -1,0 +1,50 @@
+h1 {
+    color: red;
+}
+
+p,
+li {
+    color: green;
+}
+
+li.special {
+    color: orange;
+    font-weight: bold;
+}
+
+.special {
+    color: blue;
+}
+
+p {
+    color: red;
+}
+
+.outer {
+    border: 5px solid black;
+}
+
+.box {
+    padding: 10px;
+    width: calc(90% - 30px);
+    background-color: rebeccapurple;
+    color: white;
+}
+
+.rotate {
+    margin: 30px;
+    width: 100px;
+    height: 100px;
+    background-color: rebeccapurple;
+    transform: rotate(0.8turn) translate(10px, 30%)
+}
+
+body {
+    background-color: pink;
+}
+
+@media (min-width: 300em) {
+    body {
+        background-color: blue;
+    }
+}
