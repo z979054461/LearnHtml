@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="rocket">
+            <img src="./rocket.png" alt="">
+        </div>
+    </div>
+    <script>
+        function random(m, n) {
+            return Math.ceil(Math.random() * (n - m + 1)) + m - 1;
+        }
+        const MaxValue = 40;
+        let light;
+        for (let i = 0; i < MaxValue; i++) {
+            light = document.createElement('i');
+            light.style.height = random(30, 100) + 'px';
+            light.style.left = random(1, 99) + 'vw';
+            light.style.animationDuration = ~~random(5, 30) / 10 + 's';
+            document.querySelector('.container').appendChild(light)
+        }
+    </script>
+</body>
+
+</html>
