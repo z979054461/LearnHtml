@@ -29,23 +29,32 @@
             light.style.animationDuration = ~~random(5, 30) / 10 + 's';
             container.appendChild(light)
         }
-        const keyOffset = 1;//按键偏移
+        const keyOffset = 15; //按键偏移
+        //初始位置
+        let leftOffset = 0;
+        let topOffset = -100;
         document.addEventListener('keydown', e => {
-            const left = Number.parseFloat(rocket.style.left) || 0;
-            const top = Number.parseFloat(rocket.style.top) || 0;
-            if (Math.abs(left) >= 47.5 || Math.abs(top) >= 47.5) return;
             switch (e.keyCode) {
-                case 37://left
-                    rocket.style.left = left - keyOffset + 'vw'
+                case 37: //left
+                    if (rocket.offsetLeft - keyOffset < 0) return;
+                    leftOffset -= keyOffset
+                    rocket.style.left = `${leftOffset}px`
                     break;
-                case 39://right
-                    rocket.style.left = left + keyOffset + 'vw'
+                case 39: //right
+                    if (rocket.offsetLeft + rocket.offsetWidth + keyOffset > container.offsetWidth) return;
+                    leftOffset += keyOffset
+                    rocket.style.left = `${leftOffset}px`
                     break;
-                case 38://up
-                    rocket.style.top = top - keyOffset + 'vh'
+                case 38: //up
+                    if (rocket.offsetTop - keyOffset < 0) return;
+                    topOffset -= keyOffset
+                    rocket.style.top = `${topOffset}px`
                     break;
-                case 40://down
-                    rocket.style.top = top + keyOffset + 'vh'
+                case 40: //down
+                    if (rocket.offsetTop + rocket.offsetHeight + keyOffset > container.offsetHeight)
+                        return;
+                    topOffset += keyOffset
+                    rocket.style.top = `${topOffset}px`
                     break;
             }
         })
